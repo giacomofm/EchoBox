@@ -1,0 +1,24 @@
+meta {
+  name: echo URI_TOO_LONG
+  type: http
+  seq: 414
+}
+
+get {
+  url: {{baseUrl}}/echo?status=414
+  body: none
+  auth: inherit
+}
+
+params:query {
+  status: 414
+}
+
+assert {
+  res.status: eq 414
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

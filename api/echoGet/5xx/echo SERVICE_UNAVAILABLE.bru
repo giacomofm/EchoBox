@@ -1,0 +1,24 @@
+meta {
+  name: echo SERVICE_UNAVAILABLE
+  type: http
+  seq: 503
+}
+
+get {
+  url: {{baseUrl}}/echo?status=503
+  body: none
+  auth: inherit
+}
+
+params:query {
+  status: 503
+}
+
+assert {
+  res.status: eq 503
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

@@ -1,0 +1,24 @@
+meta {
+  name: echo NON_AUTHORITATIVE_INFORMATION
+  type: http
+  seq: 5
+}
+
+get {
+  url: {{baseUrl}}/echo?status=203
+  body: none
+  auth: inherit
+}
+
+params:query {
+  status: 203
+}
+
+assert {
+  res.status: eq 203
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

@@ -1,0 +1,24 @@
+meta {
+  name: echo VARIANT_ALSO_NEGOTIATES
+  type: http
+  seq: 506
+}
+
+get {
+  url: {{baseUrl}}/echo?status=506
+  body: none
+  auth: inherit
+}
+
+params:query {
+  status: 506
+}
+
+assert {
+  res.status: eq 506
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

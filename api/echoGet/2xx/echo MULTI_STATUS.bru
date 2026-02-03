@@ -1,0 +1,24 @@
+meta {
+  name: echo MULTI_STATUS
+  type: http
+  seq: 9
+}
+
+get {
+  url: {{baseUrl}}/echo?status=207
+  body: none
+  auth: inherit
+}
+
+params:query {
+  status: 207
+}
+
+assert {
+  res.status: eq 207
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

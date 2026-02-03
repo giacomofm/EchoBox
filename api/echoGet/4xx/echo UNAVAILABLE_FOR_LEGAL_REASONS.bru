@@ -1,0 +1,24 @@
+meta {
+  name: echo UNAVAILABLE_FOR_LEGAL_REASONS
+  type: http
+  seq: 451
+}
+
+get {
+  url: {{baseUrl}}/echo?status=451
+  body: none
+  auth: inherit
+}
+
+params:query {
+  status: 451
+}
+
+assert {
+  res.status: eq 451
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

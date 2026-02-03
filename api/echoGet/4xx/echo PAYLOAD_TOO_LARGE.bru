@@ -1,0 +1,24 @@
+meta {
+  name: echo PAYLOAD_TOO_LARGE
+  type: http
+  seq: 413
+}
+
+get {
+  url: {{baseUrl}}/echo?status=413
+  body: none
+  auth: inherit
+}
+
+params:query {
+  status: 413
+}
+
+assert {
+  res.status: eq 413
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

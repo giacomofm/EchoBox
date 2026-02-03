@@ -1,0 +1,24 @@
+meta {
+  name: echo NOT_EXTENDED
+  type: http
+  seq: 510
+}
+
+get {
+  url: {{baseUrl}}/echo?status=510
+  body: none
+  auth: inherit
+}
+
+params:query {
+  status: 510
+}
+
+assert {
+  res.status: eq 510
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

@@ -1,0 +1,24 @@
+meta {
+  name: echo PAYMENT_REQUIRED
+  type: http
+  seq: 402
+}
+
+get {
+  url: {{baseUrl}}/echo?status=402
+  body: none
+  auth: inherit
+}
+
+params:query {
+  status: 402
+}
+
+assert {
+  res.status: eq 402
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

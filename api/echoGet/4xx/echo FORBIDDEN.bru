@@ -1,0 +1,24 @@
+meta {
+  name: echo FORBIDDEN
+  type: http
+  seq: 403
+}
+
+get {
+  url: {{baseUrl}}/echo?status=403
+  body: none
+  auth: inherit
+}
+
+params:query {
+  status: 403
+}
+
+assert {
+  res.status: eq 403
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

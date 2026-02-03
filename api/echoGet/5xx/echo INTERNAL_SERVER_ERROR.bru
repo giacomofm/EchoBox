@@ -1,0 +1,24 @@
+meta {
+  name: echo INTERNAL_SERVER_ERROR
+  type: http
+  seq: 500
+}
+
+get {
+  url: {{baseUrl}}/echo?status=500
+  body: none
+  auth: inherit
+}
+
+params:query {
+  status: 500
+}
+
+assert {
+  res.status: eq 500
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

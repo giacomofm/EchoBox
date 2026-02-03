@@ -1,0 +1,24 @@
+meta {
+  name: echo NOT_ACCEPTABLE
+  type: http
+  seq: 406
+}
+
+get {
+  url: {{baseUrl}}/echo?status=406
+  body: none
+  auth: inherit
+}
+
+params:query {
+  status: 406
+}
+
+assert {
+  res.status: eq 406
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

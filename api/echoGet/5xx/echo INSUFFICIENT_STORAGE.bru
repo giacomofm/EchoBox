@@ -1,0 +1,24 @@
+meta {
+  name: echo INSUFFICIENT_STORAGE
+  type: http
+  seq: 507
+}
+
+get {
+  url: {{baseUrl}}/echo?status=507
+  body: none
+  auth: inherit
+}
+
+params:query {
+  status: 507
+}
+
+assert {
+  res.status: eq 507
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

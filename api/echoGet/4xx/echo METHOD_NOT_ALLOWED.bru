@@ -1,0 +1,24 @@
+meta {
+  name: echo METHOD_NOT_ALLOWED
+  type: http
+  seq: 405
+}
+
+get {
+  url: {{baseUrl}}/echo?status=405
+  body: none
+  auth: inherit
+}
+
+params:query {
+  status: 405
+}
+
+assert {
+  res.status: eq 405
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

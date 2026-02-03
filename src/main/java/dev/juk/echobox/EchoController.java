@@ -20,6 +20,12 @@ class EchoController {
 		return ResponseEntity.status(status).build();
 	}
 
+	@GetMapping("{status}")
+	ResponseEntity<Void> echoPathGet(@PathVariable int status) {
+		log.debug("Echo GET on path {}", status);
+		return ResponseEntity.status(status).build();
+	}
+
 	@PostMapping
 	ResponseEntity<String> echoPost(
 			@RequestHeader(value = HttpHeaders.CONTENT_TYPE, defaultValue = MediaType.APPLICATION_JSON_VALUE) String contentType,
@@ -38,12 +44,6 @@ class EchoController {
 		} catch (InvalidMediaTypeException e) {
 			return MediaType.APPLICATION_OCTET_STREAM;
 		}
-	}
-
-	@GetMapping("{status}")
-	ResponseEntity<Void> echoPathGet(@PathVariable int status) {
-		log.debug("Echo GET on path {}", status);
-		return ResponseEntity.status(status).build();
 	}
 
 }

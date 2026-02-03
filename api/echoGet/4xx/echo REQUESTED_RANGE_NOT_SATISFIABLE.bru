@@ -1,0 +1,24 @@
+meta {
+  name: echo REQUESTED_RANGE_NOT_SATISFIABLE
+  type: http
+  seq: 416
+}
+
+get {
+  url: {{baseUrl}}/echo?status=416
+  body: none
+  auth: inherit
+}
+
+params:query {
+  status: 416
+}
+
+assert {
+  res.status: eq 416
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

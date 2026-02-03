@@ -1,0 +1,24 @@
+meta {
+  name: echo NO_CONTENT
+  type: http
+  seq: 6
+}
+
+get {
+  url: {{baseUrl}}/echo?status=204
+  body: none
+  auth: inherit
+}
+
+params:query {
+  status: 204
+}
+
+assert {
+  res.status: eq 204
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

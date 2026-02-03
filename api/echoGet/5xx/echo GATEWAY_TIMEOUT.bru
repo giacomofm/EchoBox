@@ -1,0 +1,24 @@
+meta {
+  name: echo GATEWAY_TIMEOUT
+  type: http
+  seq: 504
+}
+
+get {
+  url: {{baseUrl}}/echo?status=504
+  body: none
+  auth: inherit
+}
+
+params:query {
+  status: 504
+}
+
+assert {
+  res.status: eq 504
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

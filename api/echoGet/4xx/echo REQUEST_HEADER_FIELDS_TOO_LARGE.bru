@@ -1,0 +1,24 @@
+meta {
+  name: echo REQUEST_HEADER_FIELDS_TOO_LARGE
+  type: http
+  seq: 431
+}
+
+get {
+  url: {{baseUrl}}/echo?status=431
+  body: none
+  auth: inherit
+}
+
+params:query {
+  status: 431
+}
+
+assert {
+  res.status: eq 431
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

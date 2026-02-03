@@ -1,0 +1,24 @@
+meta {
+  name: echo LOCKED
+  type: http
+  seq: 423
+}
+
+get {
+  url: {{baseUrl}}/echo?status=423
+  body: none
+  auth: inherit
+}
+
+params:query {
+  status: 423
+}
+
+assert {
+  res.status: eq 423
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

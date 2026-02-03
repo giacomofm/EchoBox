@@ -1,0 +1,24 @@
+meta {
+  name: echo ACCEPTED
+  type: http
+  seq: 4
+}
+
+get {
+  url: {{baseUrl}}/echo?status=202
+  body: none
+  auth: inherit
+}
+
+params:query {
+  status: 202
+}
+
+assert {
+  res.status: eq 202
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

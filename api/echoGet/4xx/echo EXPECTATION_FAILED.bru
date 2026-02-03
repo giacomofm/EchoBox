@@ -1,0 +1,24 @@
+meta {
+  name: echo EXPECTATION_FAILED
+  type: http
+  seq: 417
+}
+
+get {
+  url: {{baseUrl}}/echo?status=417
+  body: none
+  auth: inherit
+}
+
+params:query {
+  status: 417
+}
+
+assert {
+  res.status: eq 417
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

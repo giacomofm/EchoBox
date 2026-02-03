@@ -1,0 +1,24 @@
+meta {
+  name: echo SWITCHING_PROTOCOLS
+  type: http
+  seq: 1
+}
+
+get {
+  url: {{baseUrl}}/echo?status=101
+  body: none
+  auth: inherit
+}
+
+params:query {
+  status: 101
+}
+
+assert {
+  res.status: eq 101
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

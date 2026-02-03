@@ -1,0 +1,24 @@
+meta {
+  name: echo GONE
+  type: http
+  seq: 410
+}
+
+get {
+  url: {{baseUrl}}/echo?status=410
+  body: none
+  auth: inherit
+}
+
+params:query {
+  status: 410
+}
+
+assert {
+  res.status: eq 410
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

@@ -1,0 +1,24 @@
+meta {
+  name: echo SEE_OTHER
+  type: http
+  seq: 15
+}
+
+get {
+  url: {{baseUrl}}/echo?status=303
+  body: none
+  auth: inherit
+}
+
+params:query {
+  status: 303
+}
+
+assert {
+  res.status: eq 303
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

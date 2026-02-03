@@ -1,0 +1,24 @@
+meta {
+  name: echo BAD_GATEWAY
+  type: http
+  seq: 502
+}
+
+get {
+  url: {{baseUrl}}/echo?status=502
+  body: none
+  auth: inherit
+}
+
+params:query {
+  status: 502
+}
+
+assert {
+  res.status: eq 502
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

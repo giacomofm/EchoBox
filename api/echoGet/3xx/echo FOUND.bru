@@ -1,0 +1,24 @@
+meta {
+  name: echo FOUND
+  type: http
+  seq: 14
+}
+
+get {
+  url: {{baseUrl}}/echo?status=302
+  body: none
+  auth: inherit
+}
+
+params:query {
+  status: 302
+}
+
+assert {
+  res.status: eq 302
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

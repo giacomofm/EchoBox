@@ -1,0 +1,24 @@
+meta {
+  name: echo I_AM_A_TEAPOT
+  type: http
+  seq: 418
+}
+
+get {
+  url: {{baseUrl}}/echo?status=418
+  body: none
+  auth: inherit
+}
+
+params:query {
+  status: 418
+}
+
+assert {
+  res.status: eq 418
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}
