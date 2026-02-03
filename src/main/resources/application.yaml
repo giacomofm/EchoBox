@@ -1,0 +1,12 @@
+logging:
+  level:
+    dev: debug
+spring:
+  application:
+    name: @project.name@
+    version: @project.version@
+springdoc:
+  api-docs:
+    enabled: true
+  swagger-ui:
+    enabled: true
