@@ -1,0 +1,25 @@
+meta {
+  name: echo MY Bad Request
+  type: http
+  seq: 6
+}
+
+get {
+  url: {{baseUrl}}/echo?status=test
+  body: none
+  auth: inherit
+}
+
+params:query {
+  status: test
+}
+
+assert {
+  res.status: eq 400
+  res.body: eq Invalid status code: test
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

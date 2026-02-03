@@ -3,6 +3,7 @@ package dev.juk.echobox;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.InvalidMediaTypeException;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -15,15 +16,25 @@ class EchoController {
 	private static final Logger log = LoggerFactory.getLogger(EchoController.class);
 
 	@GetMapping
-	ResponseEntity<String> echoGet(@RequestParam(defaultValue = "200") int status) {
+	ResponseEntity<?> echoGet(@RequestParam(defaultValue = "200") String status) {
 		log.debug("Echo GET with status {}", status);
-		return ResponseEntity.status(status).build();
+		return buildGetResponse(status);
 	}
 
 	@GetMapping("{status}")
-	ResponseEntity<Void> echoPathGet(@PathVariable int status) {
+	ResponseEntity<?> echoPathGet(@PathVariable String status) {
 		log.debug("Echo GET on path {}", status);
-		return ResponseEntity.status(status).build();
+		return buildGetResponse(status);
+	}
+
+	private static ResponseEntity<?> buildGetResponse(String status) {
+		int statusCode = 0;
+		try {statusCode = Integer.parseInt(status);} catch (NumberFormatException _) {}
+		var httpStatus = HttpStatus.resolve(statusCode);
+		if (httpStatus == null) {
+			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Invalid status code: " + status);
+		}
+		return ResponseEntity.status(httpStatus).build();
 	}
 
 	@PostMapping
