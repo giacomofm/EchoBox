@@ -50,7 +50,9 @@ class EchoController {
 	private static ResponseEntity<?> buildGetResponse(String status) {
 		var httpStatus = resolveStatus(status);
 		if (httpStatus == null) {
-			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Invalid status code: " + status);
+			return ResponseEntity.status(HttpStatus.BAD_REQUEST)
+					.contentType(MediaType.TEXT_PLAIN)
+					.body("Invalid status code: " + status);
 		}
 		return ResponseEntity.status(httpStatus).build();
 	}
@@ -76,7 +78,9 @@ class EchoController {
 	private static ResponseEntity<?> buildPostResponse(String status, String contentType, Object body) {
 		var httpStatus = resolveStatus(status);
 		if (httpStatus == null) {
-			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Invalid status code: " + status);
+			return ResponseEntity.status(HttpStatus.BAD_REQUEST)
+					.contentType(MediaType.TEXT_PLAIN)
+					.body("Invalid status code: " + status);
 		}
 		return ResponseEntity.status(httpStatus).contentType(parseMediaType(contentType)).body(body);
 	}
